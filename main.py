@@ -1,5 +1,6 @@
-print("Hello world!")
+import random
 
+print("Hello world!")
 
 def triangulo (b, h):
     area = (b * h) / 2
@@ -16,4 +17,21 @@ class Personaje:
         self.life = vida
         self.attack = ataque
         self.defense = defensa
+    
+    def take_dmg(self, cantidad):
+        cantidad = max(0, cantidad)
+        self.life -= cantidad
+        if self.life <= 0:
+            print(f"{self.name} ha recibido {cantidad} de daño y se ha debilitado")
+        else:
+            print(f"{self.name} recibe {cantidad} de daño, aún conserva {self.life} puntos de vida")
+        
+class Guerrero(Personaje):
+    def hachazo(self, rival):
+        dmg = (self.attack * 2) - rival.defense
+        rival.take_dmg(dmg)
+        print(f"{self.name} usa HACHAZO sobre {rival.name}, es super efectivo")
+
+class Hechicero(Personaje):
+    def fireball(self, rival):
         
