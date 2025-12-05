@@ -34,4 +34,18 @@ class Guerrero(Personaje):
 
 class Hechicero(Personaje):
     def fireball(self, rival):
+        luck = random.randint(1, 10)
+        dmg = (self.attack + luck) - rival.defense
+        rival.take_dmg(dmg)
+        print(f"{self.name} conjura BOLA DE FUEGO sobre {rival.name}, causándole quemaduras")
         
+class Arquero(Personaje):
+    def ench_arrow(self, rival):
+        luck = random.randint(1, 5)
+        dmg = (self.attack + luck) - rival.defense
+        rival.take_dmg(dmg)
+        print(f"{self.name} dispara FLECHA ENCANTADA sobre {rival.name}, aplicando sangrado")
+
+g = Guerrero("Groal, El Grande", 250, 7, 11)
+h = Hechicero("Lucas, El Todopoderoso", 170, 9, 8)
+a = Arquero("Legolas, El elfo", 185, 8, 5)
