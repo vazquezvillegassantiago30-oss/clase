@@ -1,4 +1,5 @@
 import random
+from pprint import pprint
 
 print("Hello world!")
 
@@ -49,3 +50,38 @@ class Arquero(Personaje):
 g = Guerrero("Groal, El Grande", 250, 7, 11)
 h = Hechicero("Lucas, El Todopoderoso", 170, 9, 8)
 a = Arquero("Legolas, El elfo", 185, 8, 5)
+
+# Agenda Telefónica
+
+def add(agenda, nombre, telefono):
+    agenda[nombre] = telefono
+
+def search(agenda, nombre):
+    return agenda.get(nombre, "Contacto no encontrado")
+
+def delete(agenda, nombre):
+    if nombre in agenda:
+        del agenda[nombre]
+        return f"Contacto '{nombre}' eliminado."
+    else:
+        return "El contacto no existe."
+    
+def show(agenda):
+    if not agenda:
+        print("La agenda está vacía.")
+    else:
+        for nombre, telefono in agenda.items():
+            print(f"{nombre}: {telefono}")
+
+agenda = {}
+
+add(agenda, "Santiago", "5540052828")
+add(agenda, "Norma", "5511978765")
+add(agenda, "Rodrigo", "5578773434")
+
+print(search(agenda, "Santiago"))
+print(search(agenda, "Rodrigo"))
+
+print(delete(agenda, "Norma"))
+
+show(agenda)
